@@ -11,10 +11,6 @@ const App = () => {
   );
 };
 
-/*
- * Still need to impletent the following:
- * 1. Delete user functionality in AdminPage.tsx
- * 2. Password reset functionality in UserPage.tsx
- */
+
 
 export default App;
