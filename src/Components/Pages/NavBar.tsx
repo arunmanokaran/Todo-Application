@@ -1,22 +1,11 @@
-import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import type { UserDetailsType } from "../../Utilis/User";
+import { useFetchUser } from "../../Utilis/useFetchUser";
 
 const NavBar = () => {
   const { state } = useLocation();
-  const [currentUser, setCurrentUser] = useState<UserDetailsType>();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedUserDetails = localStorage.getItem("userLoginDetails");
-    if (storedUserDetails) {
-      const userDetails = JSON.parse(storedUserDetails);
-      const findUser = userDetails.find(
-        (user: { userId: string }) => user.userId === state?.userId
-      );
-      setCurrentUser(findUser);
-    }
-  }, []);
+  const currentUser = useFetchUser(state.userId);
 
   const handleClick = () => {
     navigate("/userpage/:userId", {

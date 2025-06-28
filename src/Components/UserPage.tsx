@@ -1,27 +1,16 @@
-import { useEffect, useState } from "react";
+
 import { useLocation } from "react-router-dom";
-import type { UserDetailsType } from "../Utilis/User.ts";
 import { useAuth } from "../Utilis/AuthProvider.ts";
 import { useNavigate } from "react-router-dom";
 import { hashPassword } from "../Utilis/User.ts";
+import { useFetchUser } from "../Utilis/useFetchUser.ts";
 
 const UserPage = () => {
   const {state} = useLocation();
-  console.log(state);
-  const [currentUser, setCurrentUser] = useState<UserDetailsType>();
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedUserDetails = localStorage.getItem("userLoginDetails");
-    if (storedUserDetails) {
-      const userDetails = JSON.parse(storedUserDetails);
-      const findUser = userDetails.find(
-        (user: { userId: string }) => user.userId === state.state?.userId
-      );
-      setCurrentUser(findUser);
-    }
-  }, []);
+  const currentUser = useFetchUser(state.userId);
 
   const handleLogout = () => {
     logout();
