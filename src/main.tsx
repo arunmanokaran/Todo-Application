@@ -8,6 +8,7 @@ import SignUp from "./Components/SignUp.tsx";
 import { AuthProvider } from "./Utilis/AuthProvider.ts";
 import ProtectedRoute from "./Utilis/ProtectedRoute.tsx";
 import Login from "./Components/Login.tsx";
+import Todo from "./Components/Pages/Todo.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,15 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    element: <ProtectedRoute />, // <-- Protect these routes
+    children: [
+      {
+        path: "/todo/:userId",
+        element: <Todo />,
+      },
+    ],
   },
   {
     element: <ProtectedRoute />, // <-- Protect these routes

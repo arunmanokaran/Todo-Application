@@ -51,7 +51,7 @@ const Login = () => {
       navigate("/adminpage", { replace: true });
     } else if (isUser) {
       login();
-      navigate(`/userpage/${data.userId}`, {
+      navigate(`/todo/${data.userId}`, {
         state: { userId: data.userId },
       });
     } else {

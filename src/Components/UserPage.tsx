@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { hashPassword } from "../Utilis/User.ts";
 
 const UserPage = () => {
-  const location = useLocation();
+  const {state} = useLocation();
+  console.log(state);
   const [currentUser, setCurrentUser] = useState<UserDetailsType>();
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const UserPage = () => {
     if (storedUserDetails) {
       const userDetails = JSON.parse(storedUserDetails);
       const findUser = userDetails.find(
-        (user: { userId: string }) => user.userId === location.state?.userId
+        (user: { userId: string }) => user.userId === state.state?.userId
       );
       setCurrentUser(findUser);
     }
@@ -27,18 +28,32 @@ const UserPage = () => {
     navigate("/", { replace: true });
   };
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between mb-4">
         <h1 className="text-2xl font-bold mb-4">User Dashboard</h1>
-        <button
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-          onClick={() => {
-            handleLogout();
-          }}
-        >
-          Logout
-        </button>
+        <div>
+          <button
+            className="bg-blue-600 text-white px-4 py-2 rounded"
+            onClick={() => {
+              handleBack();
+            }}
+          >
+            Back
+          </button>
+          <button
+            className="bg-blue-600 text-white mx-2 px-4 py-2 rounded"
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            Logout
+          </button>
+        </div>
       </div>
 
       <p className="text-md mt-2">
