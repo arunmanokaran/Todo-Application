@@ -30,11 +30,6 @@ const router = createBrowserRouter([
         path: "/todo/:userId",
         element: <Todo />,
       },
-    ],
-  },
-  {
-    element: <ProtectedRoute />, // <-- Protect these routes
-    children: [
       {
         path: "/userpage/:userId",
         element: <UserPage />,
