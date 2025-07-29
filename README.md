@@ -1,54 +1,74 @@
-# React + TypeScript + Vite
+# Todo Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Todo Application repository! This project is a simple yet effective task management tool built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [File Structure](#file-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This project utilizes the following technologies:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **Vite**: A fast build tool that provides a smooth development experience.
+- **ESLint**: A static code analysis tool to identify problematic patterns in JavaScript code.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Add, edit, and delete tasks.
+- Mark tasks as completed.
+- User-friendly interface built with React components.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## File Structure
+Todo-Application/
+├── .gitignore
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+└── src/
+├── ...
+
+- **index.html**: The main HTML entry point for the application.
+- **vite.config.ts**: Configuration file for Vite.
+- **package.json**: Contains project dependencies and scripts.
+- **src/**: Contains the source code for the application.
+
+## Installation
+
+To get started with the project, clone this repository and install the dependencies:
+
+```bash
+git clone https://github.com/arunmanokaran/Todo-Application.git
+cd Todo-Application
+npm install
+
+Usage
+To start the development server and preview the application, run:
+npm run dev
+
+To build the project for production, use:
+npm run build
+
+Development
+Linting: This project uses ESLint for code quality. Make sure to follow the recommended linting rules.
+Type Checking: TypeScript is employed for type safety. Ensure that your code adheres to the defined types.
+Contributing
+Contributions are welcome! If you have suggestions for improvements or additional features, please fork the repository and submit a pull request.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
